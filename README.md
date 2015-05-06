@@ -18,5 +18,5 @@ soit manuellement, soit par règles existantes ou soit par lui-même.
 Il a besoin d’un détecteur de présence par zone définie.
 Il apprend en continue, même si ce n’est pas lui qui est utilisé pour fixer la consigne au final.
 
-Le tutoriel d'installation et de paramétrage côté eedomus est détaillés ici :
+Le tutoriel d'installation et de paramétrage côté eedomus est détaillé et illustré ici :
 http://www.domo-blog.fr/le-thermostat-intelligent-pour-eedomus/
