@@ -1,8 +1,8 @@
 # eedomus_ThermoLearn
 Gestion d'un thermostat intelligent "nest-like" pour eedomus
 
-ThermoLearn est un ensemble de scripts et d'icônes permettant la gestion d'une thermostat intelligent pour la box 
-domotiqe eedomis
+ThermoLearn est un ensemble de scripts php et d'icônes permettant la gestion d'une thermostat intelligent pour la box 
+domotique eedomus
 
 Le thermoLearn, dans sa version actuelle, doit permettre de gérer l’apprentissage de trois zones de chauffage 
 et de restituer automatiquement les consignes de température les plus adaptées aux habitudes du foyer, 
