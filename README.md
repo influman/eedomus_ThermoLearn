@@ -1,6 +1,8 @@
 # eedomus_ThermoLearn
 Gestion d'un thermostat intelligent "nest-like" pour eedomus
 
+NB : Script à installer sur serveur web/php autre que l'eedomus elle-même
+
 ThermoLearn est un ensemble de scripts php et d'icônes permettant la gestion d'une thermostat intelligent pour la box 
 domotique eedomus
 
