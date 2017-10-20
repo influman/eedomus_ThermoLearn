@@ -3,9 +3,11 @@ Gestion d'un thermostat virtuel intelligent "nest-like" pour eedomus
 
 Installation:
 1/ Créer une base de donnée "thermoLearn" et importer le fichier "ddl.sql" pour la création des tables
+
 2/ Le script "thermolearn.php" est à installer sur votre propre serveur web/php avec base MySQL (pas sur la box eedomus),
 dans un dossier /thermoLearn
-3/ Modifier le scrip thermolearn.php afin d'y renseiger vos paramètres d'accès à l'API eedomus et vos paramètres d'accès à la base de donnée "thermoLearn"
+
+3/ Modifier le script thermolearn.php afin d'y renseigner vos paramètres d'accès à l'API eedomus et vos paramètres d'accès à la base de donnée "thermoLearn"
 
 //*************************************** API eedomus *********************************
 // Identifiants de l'API eeDomus
