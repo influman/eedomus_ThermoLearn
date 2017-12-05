@@ -21,7 +21,7 @@
 	//*************************************** API eedomus *********************************
 	// Identifiants de l'API eeDomus
 	$api_user = "XXXXXX"; //ici saisir api user
-	$api_secret = "yyyyyyyyyyyyyyy";  //ici saisir api secret
+	$api_secret = "aaaaaaaaaaaaaaaa;  //ici saisir api secret
 	
 	//*************************************** Parametres bdd **************************
 	//server MySQL
@@ -31,7 +31,7 @@
 	//MySQL password
 	$sqlpass='password'; //ici saisir le pass du user phpmyadmin
 	//MySQL dataBase
-	$dataBase='thermoLearn'; //base à créer
+	$dataBase='thermoLearnv1';
 	
 	//************************** Consigne par défaut en cas d'apprentissage insuffisant ****
 	$consigneDefaut = '19.00';
@@ -63,7 +63,7 @@
     $action = "void";
     if (isset($_GET['action'])) {
        $action = $_GET['action']; 
-       if ($action != "setmode" && $action != "setpoint" && $action != "void" && $action != "control" && $action != "purgeHisto" && $action != "resetLearn") {
+       if ($action != "setmode" && $action != "setpoint" && $action != "void" && $action != "control" && $action != "purgeHisto" && $action != "resetLearn" && $action != "heatTime") {
              $action = "void";
              $erreur_msg .= "Parametre action invalide : setmode ou setpoint ou void.";
        } 
@@ -113,6 +113,7 @@
     }
      
 	$datejour = date("Y-m-d H:i:s");
+	
 	// restitution donnée de mode actuel
 	$mode = false;
 	
@@ -316,11 +317,12 @@
 		while(isset($arrHistorique) && isset($arrHistorique->history_overflow) && $arrHistorique->history_overflow == 10000);
 	}
 	
+	
 	$mysqli->close();
 	$xml .= "</THERMOLEARN>";
 	//header('text/xml');
-	//echo $xml;
- 	return $xml;	
+	echo $xml;
+ 	//return $xml;	
 
 	// *******************************************************************
 	// Détermination de la thermoconsigne
@@ -1554,6 +1556,8 @@
 		}
 	}	
 		
+    
+    
     /**
 	 * 
 	 * Réalise en select en base de donnée et retourne le résultat
