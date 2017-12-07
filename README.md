@@ -1,10 +1,12 @@
-ï»¿# eedomus_ThermoLearn
 **Gestion d'un thermostat virtuel intelligent "nest-like" pour eedomus**  
+  
 *Installation:*  
-1/ CrÃ©er une base de donnÃ©e "thermoLearnv1" et importer le fichier "ddl.sql" pour la crÃ©ation des tables  
-2/ Le script "thermolearn.php" est Ã  installer sur votre propre serveur web/php avec base MySQL (pas sur la box eedomus),
+1/ Télécharger le script thermolearn.php et le fichier ddl.sql depuis le GitHub  https://github.com/influman/eedomus_ThermoLearn  
+2/ Créer une base de donnée "thermoLearnv1" sur votre serveur MySql et importer le fichier "ddl.sql" pour la création des tables (via phpMyAdmin par exemple)  
+3/ Le script "thermolearn.php" est à installer sur votre  serveur web/php (pas sur la box eedomus donc),
 dans un dossier /thermoLearn  
-3/ Modifier le script thermolearn.php afin d'y renseigner vos paramÃ¨tres d'accÃ¨s Ã  l'API eedomus et vos paramÃ¨tres d'accÃ¨s Ã  la base de donnÃ©e "thermoLearn"  
+4/ Modifier le script thermolearn.php afin d'y renseigner vos paramètres d'accès à l'API eedomus et vos paramètres d'accès à la base de donnée "thermoLearn"  
+  
     //*************************************** API eedomus *********************************  
     // Identifiants de l'API eeDomus  
     $api_user = "XXXXXX"; //ici saisir api user  
@@ -13,31 +15,44 @@ dans un dossier /thermoLearn
     //server MySQL  
     $sqlserver='localhost';  
     //MySQL login  
-    $sqllogin='root'; //ici saisir le user sql de phpmyadmin  
+    $sqllogin='root'; //ici saisir le user sql
     //MySQL password  
-    $sqlpass='password'; //ici saisir le pass du user phpmyadmin  
+    $sqlpass='password'; //ici saisir le pass du user
     //MySQL dataBase  
-    $dataBase='thermoLearn'; //base Ã  crÃ©er  
+    $dataBase='thermoLearnv1'; //base à créer  
   	
 4/ Sur le store eedomus, installer le plug-in "thermoLearn", en renseignant :  
-- l'ip d'accÃ¨s au serveur php/mysql  
-- le numÃ©ro de la zone de chauffage contrÃ´lÃ©e par ce plug-in (1 Ã  8).  
-- le code API du dÃ©tecteur de mouvement liÃ© Ã  cette zone  
-- le code API de la consigne rÃ©elle de Zone de Chauffage, qui sera synchronisÃ©e par le thermoLearn  
+- l'ip d'accès au serveur php/mysql avec le chemin  
+- le numéro de la zone de chauffage contrôlée par ce plug-in (1 à 8).  
+- le code API du détecteur de mouvement lié à cette zone  
+- le code API de la consigne réelle de Zone de Chauffage (ou votre propre consigne), qui sera synchronisée par le thermoLearn  
+Le script thermolearn_call.php est alors installé sur votre box. Il permet d'appeler le script déporté, et d'y passer les arguments nécessaires.  
   
   
 ****************************************************************************************************************  
-Le thermoLearn permet de gÃ©rer lâ€™apprentissage de 8 zones de chauffage au maximum,  
-et de restituer automatiquement les consignes de tempÃ©rature les plus adaptÃ©es aux habitudes du foyer,  
+Le thermostat intélligent thermoLearn permet de gérer l'apprentissage de 8 zones de chauffage au maximum,  
+et de restituer automatiquement les consignes de température les plus adaptées aux habitudes du foyer,  
 en fonction des jours de la semaine, et des saisons.  
   
 En voici les principes :  
   
-Le systÃ¨me a pour objectif final de fixer des consignes de tempÃ©rature de maniÃ¨re autonome, de 1 Ã  8 consignes maximum.  
-Les parties Â« puissance/commutation Â» des chauffages ne sont pas gÃ©rÃ©es via le systÃ¨me dâ€™apprentissage.   
-Celui-ci ne fournit que les consignes de tempÃ©rature au systÃ¨me Â« puissance Â», qui peut donc Ãªtre hystÃ©rÃ©sis ou PID, ou DIY.  
-Le thermostat intelligent doit apprendre en continue en fonction des consignes fixÃ©es,   
-soit manuellement, soit par rÃ¨gles existantes ou soit par lui-mÃªme.  
-Il a besoin dâ€™un dÃ©tecteur de prÃ©sence par zone dÃ©finie.  
-Il apprend en continue, mÃªme si ce nâ€™est pas lui qui est utilisÃ© pour fixer la consigne au final.  
+Le systême a pour objectif final de fixer des consignes de température de manière autonome, de 1 à 8 consignes maximum.  
+Les parties "puissance/commutation" des chauffages ne sont pas gérées via le systême d'apprentissage.   
+Celui-ci ne fournit que les consignes de température au systême "puissance", qui peut donc être hystérésis ou PID, ou DIY.  
+Le thermostat intelligent doit apprendre en continue en fonction des consignes fixées manuellement par les utilisateurs,   
+soit manuellement, soit par règles existantes.  
+Il a besoin d'un détecteur de présence par zone définie.  
+Il apprend en continue, même si ce n'est pas lui qui est utilisé pour fixer la consigne au final.  
+  
+Positionner d'abord le thermoLearn en mode User, et sélectionner manuellement les consignes thermoLearn pendant une à deux semaines.  
+Positionner ensuite le thermoLean en mode Smart, il sélectionnera alors lui-même les consignes.  
+Lorsque la consigne déterminée automatiquement ne vous convient pas, il suffit de sélectionner manuellement la nouvelle consigne,  
+et le thermoLearn apprendra, puis repassera en Smart automatiquement 3h plus tard.  
+Au fil des jours, l'apprentissage s'affine et optimise votre consommmation, conformément à vos habitudes de confort.  
+  
+Le thermoLearn synchronise sa consigne avec une consigne eedomus (consigne Zone de Chauffage ou votre propre état de consigne).  
+Cette consigne est à donner en paramètre via son code API.  
+Il faut s'assurer que toutes les valeurs possibles de la consigne thermoLearn existent dans la consigne Zone de Chauffage, les rajouter le cas échéant.  
+
+  
 
