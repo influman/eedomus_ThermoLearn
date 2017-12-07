@@ -21,15 +21,15 @@
 	//*************************************** API eedomus *********************************
 	// Identifiants de l'API eeDomus
 	$api_user = "XXXXXX"; //ici saisir api user
-	$api_secret = "aaaaaaaaaaaaaaaa;  //ici saisir api secret
+	$api_secret = "aaaaaaaaaaa";  //ici saisir api secret
 	
 	//*************************************** Parametres bdd **************************
 	//server MySQL
 	$sqlserver='localhost';
 	//MySQL login
-	$sqllogin='root'; //ici saisir le user sql de phpmyadmin
+	$sqllogin='root'; //ici saisir le user sql
 	//MySQL password
-	$sqlpass='password'; //ici saisir le pass du user phpmyadmin
+	$sqlpass='password'; //ici saisir le pass du user
 	//MySQL dataBase
 	$dataBase='thermoLearnv1';
 	
@@ -222,7 +222,7 @@
 				synchroConsigne($zone, $thermoconsigne, $api_consigne);
 			}
 		}
-		if ($api_thermoconsigne == 0) {
+		if ($api_thermoconsigne == 0 || $api_thermoconsigne != $api_thermoconsigne_arg) {
 			// le code api de la consigne thermolearn n'a jamais été enregistré dans la table mode
 			// ce code est censé être en argument de l'appel à ce script en action "setpoint"
 			if ($mode) {
