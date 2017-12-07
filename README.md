@@ -21,7 +21,7 @@ dans un dossier /thermoLearn
     //MySQL dataBase  
     $dataBase='thermoLearnv1'; //base à créer  
   	
-4/ Sur le store eedomus, installer le plug-in "thermoLearn", en renseignant :  
+5/ Sur le store eedomus, installer le plug-in "thermoLearn", en renseignant :  
 - l'ip d'accès au serveur php/mysql avec le chemin  
 - le numéro de la zone de chauffage contrôlée par ce plug-in (1 à 8).  
 - le code API du détecteur de mouvement lié à cette zone  
